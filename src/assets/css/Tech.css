@@ -1,0 +1,492 @@
+body {
+    margin-top: 15vh;
+    font-size: 14px;
+}
+
+@media (max-width : 1200px){
+
+    .header .nav {
+        display: none !important; 
+        flex-direction: column ;
+        align-items: flex-start;
+        position: absolute;
+        top: 95px;
+        margin-top: 30px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 999;
+    }
+    /* .nav1 {
+        display: none !important; 
+        flex-direction: column ;
+        align-items: flex-start;
+        position: absolute;
+        top: 100px;
+        margin-top: 30px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 1000;
+    } */
+    .search-bar{
+        display: flex !important;
+        
+    }
+    .search-icon{
+        display: none !important;
+    }
+    .header .nav.show {
+        display: flex !important;
+    }
+    .nav a{
+        margin-left: 10vw;
+    }
+    /* .nav1.show {
+        display: flex !important;
+    }
+    .nav1 a{
+        margin-left: 10vw;
+    } */
+    .hamburger ,.mobile-nav-toggle {
+        display: block !important;
+        margin-right: 2vw;
+    }
+    .mobile-nav-toggle{
+        font-size: 2rem;
+        cursor: pointer;
+    }
+    .login{
+        background-color: #FFFFFF !important; 
+        
+    }
+    .login a{
+        color: #ea0606 !important;
+    }
+    .banner{
+        margin-top: 18vh !important;
+        object-fit: contain;
+    }
+    .sanpham1 {
+        height: 60vh !important;
+        width: 25vw !important;
+        
+    }
+    .sanpham2 {
+        height: 60vh !important;
+        width: 25vw !important;
+    }
+    .sanpham3 {
+        height: 60vh !important;
+        width: 25vw !important;
+    }
+    .header_row1{
+        background-color: #FFFFFF !important;
+    }
+    .tygia .nav + .nav-tabs{
+        display: flex !important;
+    }
+}
+@media (max-width :768px){
+    .share .card{
+        width: 80vw !important;
+    }
+    
+}
+@media (max-width :576px){
+    .header_row2{
+        right: 0;
+        
+    }
+    .login{
+        width: 40vw;
+        margin-right: 0 !important;   
+    }
+    .hamburger{
+        width: 10vw;
+        margin-right: 10vw;
+    }
+    .logo{
+        width: 10vw;
+        height: auto;
+    }
+    .logo-desktop{
+        display: none !important;
+    }
+    .logo-mobile{
+        display: block !important;
+    }
+    .sanpham1{
+        margin-left: 20px;
+        width: 90vw !important;
+        margin-bottom: 20px;
+    }
+    .sanpham2{
+        margin-left: 20px;
+        width: 90vw !important;
+        margin-bottom: 20px;
+    }
+    .sanpham3{
+        margin-left: 20px;
+        width: 90vw !important;
+        margin-bottom: 20px;
+    }
+    .review .card{
+        margin-left: 10px;
+        width: 90vw !important;
+    }
+    .access{
+        display: none;
+    }
+    .card-bottom{
+        width: 90vw !important;
+        border: none;
+    }
+   
+}
+.hamburger{
+    display: none;
+}
+.header_row1{
+    background-color: #F5F6F8;
+    
+}
+.header_row1 a{
+    text-decoration: none;
+    color: #616161;
+    margin-left: 10px;
+    font-size: 16px;
+}
+.header_row1 a:hover{
+    color: #ea0606;
+}
+.search{
+    background-color: #FFFFFF;
+
+}
+.search-bar{
+    display: none;
+    width: 95vw;
+    height: 8vh;
+    
+}
+.header_row2{
+    background-color: #FFFFFF;
+    display: flex;
+}
+.header_row2 a{
+    position: relative;
+    text-decoration: none;
+    color: #000000;
+    margin-left: 15px;
+    padding-bottom: 5px; 
+}
+.header_row2 a::after{
+    content: ''; 
+    position: absolute;
+    width: 0;
+    height: 2px; 
+    background-color: red;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease; 
+}
+.header {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0; 
+    z-index: 1000; 
+}
+
+.logo img {
+    width: 10vw;
+    max-width: 200px; 
+
+}
+.logo-mobile{
+    display: none;
+}
+.logo-desktop{
+    display: block;
+}
+.logo a::after{
+    display: none;
+}
+.header_row2 a:hover::after{
+    width: 100%; 
+}
+.language{
+    margin-right: 5vw;
+}
+
+.login{
+    background-color: #ea0606;
+    margin-right: 5vw;
+    
+}
+.login a{
+    color: white;
+}
+.login .bi-arrow-right-short{
+    color:white
+}
+.login a::after{
+    display: none;
+}
+.subnav{
+    left :5vw;
+    position: absolute;
+    display: flex;
+    width: 90vw;
+}
+.subnav{
+    background-color: #FFFFFF;
+    display: none;
+}
+
+.right-subnav{
+    width: 40%;
+}
+
+.left-subnav a::after{
+    display: none;
+}
+.left-subnav img{
+    height: 50px;
+}
+/* .submenu1, .submenu2, .submenu3{
+    display: none !important;
+}
+.sub1:hover + .submenu1{
+    display: block !important;
+}
+
+.sub2:hover + .submenu2{
+    display: block !important;
+}
+.sub2:hover + .submenu3{
+    display: block !important;
+} */
+.banner{
+    height: 35vh ;
+    background-image: url('../../assets/imgs/Banner-website-1440x280.png') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: contain;
+}
+.intro img{
+    width: 175px;
+    height: 300px;
+}
+.intro a img{
+    width: 70px;
+    height: 70px;
+}
+.intro a{
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    
+}
+.notice{
+    background-color: #9E1E1F;
+}
+.notice a{
+    color: white;
+    text-decoration: none;
+}
+.notice p{
+    color: white;
+}
+.chitiet{
+    background-color: #FFFFFF;
+}
+.chitiet a{
+    color: #000000;
+    font-weight: bold;
+}
+.chitiet:hover{
+    background-color: gray;
+}
+.chitiet:hover a{
+    color: #FFFFFF;
+}
+.bi-arrow-right-short{
+    color: red;
+}
+.chitiet:hover bi-arrow-right-short{
+    color: #FFFFFF;
+}
+.sanpham1{
+    background-image: url('../../assets/imgs/cq5dam.web.1280.1280.jpeg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh;
+    width: 40vw;
+}
+
+.sanpham2{
+    background-image: url('../../assets/imgs/CASA-desktop-fc17150904-af6c767595-50ad25cc6a.webp') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh;
+    width: 20vw;
+}
+.sanpham3{
+    background-image: url('../../assets/imgs/cq5dam.web.1280.1280.png') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh;
+    width: 20vw ;
+}
+.sanpham a{
+    text-decoration: none;
+    color: #000000;
+}
+.sanpham1 a{
+    text-decoration: none;
+    color: #000000;
+}
+.sanpham2 a{
+    text-decoration: none;
+    color: white !important;
+}
+.sanpham3 a{
+    text-decoration: none;
+    color: #000000;
+}
+.review .card{
+    width: 25vw;
+    height: 100%;
+    overflow: hidden;
+}
+.card img{
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;    
+}
+.card:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.card:hover img{
+    transform: scale(1.1);
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.giaithuong img{
+    width: 85vw ;
+    height: 25vh;
+    object-fit: contain;
+}
+.review{
+    background-color: #9E1E1F;
+}
+.access{
+    background-color: #E3E4E6;
+}
+.tygia{
+    background-color: #F5F6F8; 
+}
+.nav-link a{
+    margin-left: 0;
+    color: #000000 !important; 
+}
+.nav-item, .nav-link{
+    border: none !important;
+}
+.nav-tabs .active a{
+    font-weight: bold !important;
+        
+}
+
+.nav-item, .nav-link{
+    border-radius: 0 !important;
+}
+.service{
+    background-color: #F5F6F8;
+
+}
+.service img{
+    width: 75px;
+    height: 75px;
+}
+.share a{
+    text-decoration: none;
+    color: #000000;
+}
+.share .card{
+    width: 25vw;
+    height: 100%;
+    overflow: hidden;
+}
+.xemthem{
+    background-color: #000000;
+    height: 50px;
+}
+.xemthem a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+.card-bottom{
+    width: 40vw;
+    border: none;
+}
+.card-bottom img{
+    height: 25vh;
+}
+.card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+.more{
+    background-color: #E3E4E6;
+}
+.footer a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+.footer p{
+    color: #FFFFFF;
+}
+.footer{
+    background-color: #212121 !important;
+}
+.footer .logo img{
+    width: 280px;
+    height: 40px;
+}
+.footer .submenu {
+    display: none;
+    top: 100%;
+    left: 0;
+    padding: 10px;
+    z-index: 1000; 
+}
+.footer .submenu a{
+    display: block;
+    margin-top: 7px;
+}
+.footer .submenu.show {
+    display: block; 
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+
+.arrow-down {
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển động mượt */
+}
+
+.arrow-down.rotate {
+    transform: rotate(180deg); /* Xoay 180 độ khi có class rotate */
+}

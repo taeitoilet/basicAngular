@@ -1,0 +1,40 @@
+/* footer */
+.footer a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+.footer p{
+    color: #FFFFFF;
+}
+.footer{
+    background-color: #212121 !important;
+}
+.footer .logo img{
+    width: 280px;
+    height: 40px;
+}
+.footer .submenu {
+    display: none;
+    top: 100%;
+    left: 0;
+    padding: 10px;
+    z-index: 1000; 
+}
+.footer .submenu a{
+    display: block;
+    margin-top: 7px;
+}
+.footer .submenu.show {
+    display: block; 
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+
+.arrow-down {
+    transition: transform 0.3s ease;
+}
+
+.arrow-down.rotate {
+    transform: rotate(180deg);
+}
