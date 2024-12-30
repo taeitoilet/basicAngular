@@ -1,0 +1,265 @@
+
+@media (min-width : 1200px){
+    .banner{
+       top : 0 !important;
+    }
+}
+@media (max-width : 1200px){
+
+    .banner{
+        margin-top: 18vh !important;
+        object-fit: contain;
+    }
+    .sanpham1 {
+        height: 60vh !important;
+        width: 25vw !important;
+        
+    }
+    .sanpham2 {
+        height: 60vh !important;
+        width: 25vw !important;
+    }
+    .sanpham3 {
+        height: 60vh !important;
+        width: 25vw !important;
+    }
+    .header_row1{
+        background-color: var(--primary-white) !important;
+    }
+    .tygia .nav + .nav-tabs{
+        display: flex !important;
+    }
+}
+@media (max-width :768px){
+    .share .card{
+        width: 80vw !important;
+    }
+    
+}
+@media (max-width :576px){
+    .sanpham1{
+        margin-left: 20px;
+        width: 90vw !important;
+        margin-bottom: 20px;
+    }
+    .sanpham2{
+        margin-left: 20px;
+        width: 90vw !important;
+        margin-bottom: 20px;
+    }
+    .sanpham3{
+        margin-left: 20px;
+        width: 90vw !important;
+        margin-bottom: 20px;
+    }
+    .review .card{
+        margin-left: 10px;
+        width: 90vw !important;
+    }
+    .access{
+        display: none;
+    }
+    .card-bottom{
+        width: 90vw !important;
+        border: none;
+    }
+   
+}
+@media (max-height :576px){
+   .banner{
+        /* object-fit: cover !important;
+        padding-top: 30px !important;
+        min-height: 70vh !important;
+        background-size: contain !important; */
+        height: 70vh !important;
+   }
+}
+
+.banner{
+    height: 35vh ;
+    background-image: url('../../assets/imgs/Banner-website-1440x280.png') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+}
+.intro img{
+    width: 175px;
+    height: 300px;
+}
+.intro a img{
+    width: 70px;
+    height: 70px;
+}
+.intro a{
+    font-weight: bold;
+    color: var(--primary-text-color);
+    text-decoration: none;
+    
+}
+.notice{
+    background-color: #9E1E1F;
+}
+.notice a{
+    color: var(--secondary-text-color);
+    text-decoration: none;
+}
+.notice p{
+    color: var(--secondary-text-color);
+}
+.chitiet{
+    background-color: var(--primary-white);
+}
+.chitiet a{
+    color: var(--primary-text-color);
+    font-weight: bold;
+}
+.chitiet:hover{
+    background-color: var(--primary-gray);
+}
+.chitiet:hover a{
+    color: var(--secondary-text-color);
+}
+.bi-arrow-right-short{
+    color: var(--primary-red);
+}
+.chitiet:hover bi-arrow-right-short{
+    color: var(--secondary-text-color);
+}
+.sanpham1{
+    background-image: url('../../assets/imgs/cq5dam.web.1280.1280.jpeg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh;
+    width: 40vw;
+}
+
+.sanpham2{
+    background-image: url('../../assets/imgs/CASA-desktop-fc17150904-af6c767595-50ad25cc6a.webp') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh;
+    width: 20vw;
+}
+.sanpham3{
+    background-image: url('../../assets/imgs/cq5dam.web.1280.1280.png') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh;
+    width: 20vw ;
+}
+.sanpham a{
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+.sanpham1 a{
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+.sanpham2 a{
+    text-decoration: none;
+    color: var(--secondary-text-color) !important;
+}
+.sanpham3 a{
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+.review .card{
+    width: 25vw;
+    height: 100%;
+    overflow: hidden;
+}
+.card img{
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;    
+}
+.card:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.card:hover img{
+    transform: scale(1.1);
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.giaithuong img{
+    width: 85vw ;
+    height: 25vh;
+    object-fit: contain;
+}
+.review{
+    background-color: var(--secondary-background-color);
+}
+.access{
+    background-color: #E3E4E6;
+}
+.tygia{
+    background-color: var(--table-color); 
+}
+.nav-link a{
+    margin-left: 0;
+    color: var(--primary-text-color) !important; 
+}
+.nav-item, .nav-link{
+    border: none !important;
+}
+.nav-tabs .active a{
+    font-weight: bold !important;
+}
+
+.nav-item, .nav-link{
+    border-radius: 0 !important;
+}
+.service{
+    background-color: var(--table-color);
+
+}
+.service img{
+    width: 75px;
+    height: 75px;
+}
+.share a{
+    text-decoration: none;
+    color: var(--primary-text-color);
+}
+.share .card{
+    width: 25vw;
+    max-width: 25vw;
+    height: 100%;
+    overflow: hidden;
+}
+.share .card img{
+    object-fit: cover;
+}
+.xemthem{
+    background-color: var(--primary-text-color);
+    height: 50px;
+}
+.xemthem a{
+    text-decoration: none;
+    color: var(--secondary-text-color);
+}
+.card-bottom{
+    width: 40vw;
+    max-width: 40vw;
+    border: none;
+}
+.card-bottom img{
+    height: 25vh;
+}
+.card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+.more{
+    background-color: var(--table-color);
+}
+

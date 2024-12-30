@@ -1,0 +1,50 @@
+<div class="search-tab ">
+    <div class="search-head d-flex">
+        <div class="dropdown">
+            <button class="btn dropdown-toggle border border-secondary d-flex justify-content-between align-items-center" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                @if (category !='') {
+                    <a >{{ category }}</a>
+                }
+                @else {
+                    <a>Tất cả</a>
+                }
+                <img class="icon-dropdown" src="../../assets/imgs/chevron-bottom-icon.svg">
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" [class.active]="category === ''"  (click)="category=''" (click)="searchNews();onChangeParams()">Tất cả</a></li>
+                @for (item of categories; track $index) {
+                    <li><a class="dropdown-item"  [class.active]="category === item" (click)="category = item" (click)="searchNews();onChangeParams()">{{item}}</a></li>
+                }
+            </ul>
+        </div>
+        <div class="input-container position-relative">
+            <input  id="search-input" [(ngModel)]="searchKey" type="text" class="form-control input-container" placeholder="Chúng tôi có thể hỗ trợ gì cho quý khách?"  (input)="onInputChange()"(keydown.enter)="searchNews();onChangeParams()" >
+            <button *ngIf="searchKey"  id="clearButton" class="btn-close btn-clear position-absolute translate-middle-y me-3 end-0 top-50" type="button" (click)="onReset()" ></button>
+        </div>       
+    </div>
+    @if (newsList.length >0) {
+        <div class="line-break my-4">
+            <hr>
+        </div>
+    }
+    
+    @for (item of newsList; track $index) {
+        <div class="row result rounded shadow-sm mb-3">
+            <div class="col-auto search-img">
+                <img src="../../assets/imgs/cq5dam.thumbnail.319.319.png" alt="...">
+            </div>
+            <div class="col content">
+                <p class="fw-bold fs-5"><a href="">{{item.news_title}}</a></p>
+                <a>{{item.news_content}}</a>
+            </div>
+        </div>
+    }
+    @if (newsList.length >0) {
+        <nav *ngIf="totalPages > 1">
+            <ul class="page-items">             
+                <li  *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="i + 1 === currentPage"  class="page-item d-flex justify-content-center align-items-center"  [class.active]="i === currentPage" (click)="changePage(i);onChangeParams()"><a>{{i+1}}</a></li>       
+            </ul>
+        </nav>
+    }
+</div>

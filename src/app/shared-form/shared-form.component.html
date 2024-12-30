@@ -1,0 +1,61 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <!-- Render fields dựa trên cấu hình -->
+      <div *ngFor="let field of fields" class="col-5 mb-2 me-2">
+        <label *ngIf="field.label" [for]="field.name">{{ field.label }}</label>
+  
+        <!-- Input loại text -->
+        <input
+          *ngIf="field.type === 'text' || field.type === 'password' || field.type === 'email' || field.type === 'date'"
+          [type]="field.type"
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder"
+          class="form-control"
+        />
+  
+        <!-- Dropdown -->
+        <div *ngIf="field.type === 'dropdown'" class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ form.get(field.name)?.value || field.placeholder }}
+          </button>
+          <ul class="dropdown-menu">
+            <li
+              *ngFor="let item of field.options"
+              (click)="onOptionSelect(item, field.idField,field.nameField,field.name)"
+            >
+              <a class="dropdown-item">{{ item.option_name }}</a>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Hiển thị lỗi -->
+        <div
+          *ngIf="form.get(field.name)?.touched && form.get(field.name)?.invalid"
+          class="text-danger"
+        >
+          <small *ngFor="let error of field.errors">
+            <div *ngIf="form.get(field.name)?.hasError(error.type)">
+              {{ error.message }}
+            </div>
+          </small>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Nút chức năng -->
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" (click)="onReset()">Reset</button>
+      <button
+        class="btn btn-success"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Save
+      </button>
+    </div>
+  </form>

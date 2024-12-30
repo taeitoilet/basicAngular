@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --primary-red : #ed1b24;
+    --primary-white: #fff;
+    --primary-grey : #616161;
+    --primary-gray : gray;
+    --secondary-background-color: #9E1E1F;
+    --third-background-color :rgba(0, 0, 0, 0.467);
+    --background-color-lightgray: #dedede;
+    --primary-text-color : #000000;
+    --secondary-text-color : #FFFFFF;
+    --table-color : #F5F6F8;
+    
+    --footer-background-color : #212121;
+}
+body{
+    background-color: var(--table-color);
+}
+/* *{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */

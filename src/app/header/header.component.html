@@ -1,4 +1,4 @@
-<div class="header row">
+<div class="header shadow bg-body-tertiary rounded row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
         <div class=" header_row1 row d-flex text-center p-2 nav" id="mainNav">
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 offset-xl-1 me-1">
@@ -21,8 +21,8 @@
                 <a href="#" class="me-2">Priority</a>
                 <a href="#" class="me-2">Private</a>
             </div>
-            <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto d-md-flex ms-auto p-2 search-icon ">
-                <a href="#"><i class="bi bi-search"></i></a>
+            <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto d-md-flex ms-auto p-2 search-icon" id="search-icon">
+                <a href="" data-bs-toggle="modal" data-bs-target="#searchModal" (click)="loadSessionStorage()"><i class="bi bi-search"></i></a>
             </div>
             <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto p-2 me-2">  
                 <a href="#">Công cụ tiện ích</a>
@@ -47,14 +47,21 @@
         </div>
         <div class=" header_row2 row  d-flex align-items-center">
             <div class="col-lg-auto col-md-auto col-sm-auto col-xs-2 offset-sm-1 logo">
-                <a href="#" class="logo-desktop"><img src="../assets/imgs/techcombank_logo_svg_86201e50d1.svg" ></a>
+                <a href="#" routerLink="/" class="logo-desktop"><img src="../assets/imgs/techcombank_logo_svg_86201e50d1.svg" ></a>
                 <a href="#" class="logo-mobile"><img src="../assets/imgs/cq5dam.web.640.640.png" ></a>
             </div>
             <div class=" col-xl-auto col-lg-auto col-md-auto col-sm-auto col-xs-auto me-1 nav1" id="mainNav1">
                 <div class="row">
                     <div class=" col-xl-auto col-lg-12 col-md-12 col-sm-12 col-xs-12 me-1 ">
                         <div class="menu-item">
-                            <a href="#" class="navlink" id="nav">Chi Tiêu</a>
+                            @if(this.authService.isAdmin()){
+                                <a href="/user" class="navlink" id="nav">Dashboard</a>
+                            }@else if(!this.authService.isAdmin()) {
+                                <a href="#" class="navlink" id="nav">Chi Tiêu</a>
+                            }
+                            @if(isUnauthorized()){
+                                <a href="#" class="navlink" id="nav">Chi Tiêu</a>
+                            }
                             <div class="subnav position-absolute  rounded-2" id="subnav">
                                 <div class="right-subnav">
                                     <div class="row my-3 submenu-link ">
@@ -122,13 +129,13 @@
                                                 </div>
                                                 <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto">
                                                     <a class="">Tài khoản thấu chi MyCash</a>
-                                                    
+                                                    <br/>
                                                     <a>Ứng tiền tức thì, chi tiêu linh hoạt</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row d-flex mt-auto  bg-secondary">
+                                    <!-- <div class="row d-flex mt-auto  bg-secondary">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="row my-3">
                                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 me-2 col-md-1">
@@ -140,7 +147,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- <div class="left-subnav submenu2">
                                     <div class="row my-5 ">
@@ -371,17 +378,17 @@
                     </div>
                     <div class=" col-xl-auto col-lg-12 col-md-12 col-sm-12 col-xs-12 me-1 ">
                         <div class="menu-item">
-                            <a href="#" id="nav">Vay</a>
+                            <a id="nav">Vay</a>
                         </div>
                     </div>
                     <div class="col-xl-auto col-lg-12 col-md-12 col-sm-12 col-xs-12 me-1 ">
                         <div class="menu-item">
-                            <a href="#" id="nav">Đầu tư</a>
+                            <a routerLink="/news" id="nav">Tin tức</a>
                         </div>
                     </div>
                     <div class="col-xl-auto col-lg-12 col-md-12 col-sm-12 col-xs-12 me-1">
                         <div class="menu-item">
-                            <a href="#" id="nav">Bảo hiểm</a>
+                            <a id="nav">Giao dịch</a>
                         </div>
                     </div>
                     <div class="col-xl-auto col-lg-12 col-md-12 col-sm-12 col-xs-12 me-1">
@@ -398,7 +405,7 @@
             </div>
             
             <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto d-flex ms-auto p-3 login">
-                <a href="#">Đăng nhập<i class="bi bi-arrow-right-short " ></i></a>
+                <a routerLink="/login">Đăng nhập<i class="bi bi-arrow-right-short " ></i></a>
             </div>
             <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto hamburger">
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -409,8 +416,98 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-3">
             <div class="input-group search-bar mb-2">
                 <label  class="input-group-text " style="background-color: #FFFFFF;"><i class="bi bi-search"></i></label>
-                <input type="text" class="form-control border-start-0" placeholder="Tìm kiếm thông tin" >
+                <input type="text" [(ngModel)]="searchKey"  (keyup.enter)="onSearch();" class="form-control border-start-0" placeholder="Tìm kiếm thông tin" >
             </div>
         </div>
     </div>
 </div>
+<!-- <div class="search-tab">
+    <div class="row search">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-3">
+            <div class="input-group search-bar-1 mb-2">
+                <label  class="input-group-text " style="background-color: #FFFFFF;"><i class="bi bi-search"></i></label>
+                <input type="text" class="form-control border-start-0" placeholder="Tìm kiếm thông tin" >
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a class="fw-bold">Các tìm kiếm gần đây của bạn</a>
+        </div>
+        <div class="col-12">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a class="fw-bold">Liên kết hữu ích</a>
+        </div>
+        <div class="col-12">
+            <div class="row card-search">
+                <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto card-search-1 d-flex flex-column justify-content-end rounded-3 me-4">
+                    <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Thẻ tín dụng</a>
+                </div>
+                <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto  card-search-1 d-flex flex-column justify-content-end rounded-3 me-4 ">
+                    <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Thẻ tín dụng</a>
+                </div>
+                <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto card-search-1 d-flex flex-column justify-content-end rounded-3 me-4">
+                    <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Thẻ tín dụng</a>
+                </div>
+                <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto  card-search-1 d-flex flex-column justify-content-end rounded-3">
+                    <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Thẻ tín dụng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog  modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="search-tab">
+                <div class="row search">
+                    <div class="col-auto">
+                        <div class="input-group search-bar-1 mb-2">
+                            <label  class="input-group-text " style="background-color: #FFFFFF;"><i class="bi bi-search"></i></label>
+                            <input type="text" [(ngModel)]="searchKey"  (keyup.enter)="onSearch();" class="form-control border-start-0" placeholder="Tìm kiếm thông tin" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 search-key">
+                    <div class="col-12">
+                        <a class="fw-bold">Các tìm kiếm gần đây của bạn</a>
+                    </div>
+                    @if (searchKeyList.length > 0) {
+                        <div class="col-12 my-4 search-recent d-flex">
+                            @for (item of recentSearchKeys; track $index) {
+                                <a (click)="searchKey = item ;onSearch()" id="deleteSearch" class="rounded-pill p-3 d-flex align-items-center justify-content-center">{{item}}<img (click)="removeSearchKey(item, $event)" class="rounded-circle p-1" src="../../assets/imgs/icon-close-grey.svg"></a>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="row ">
+                    <div class="col-12 mb-3">
+                        <a class="fw-bold">Liên kết hữu ích</a>
+                    </div>
+                    <div class="col-auto">
+                        <div class="row card-search flex-wrap justify-content-between">
+                            <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto card-search-1 d-flex flex-column justify-content-end rounded-3">
+                                <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Thẻ tín dụng</a>
+                            </div>
+                            <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto  card-search-2 d-flex flex-column justify-content-end rounded-3">
+                                <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Vay tiêu dùng</a>
+                            </div>
+                            <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto card-search-3 d-flex flex-column justify-content-end rounded-3 ">
+                                <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Techcombank mobile</a>
+                            </div>
+                            <div class="col-lg-auto col-md-auto col-sm-auto col-xs-auto  card-search-4 d-flex flex-column justify-content-end rounded-3">
+                                <a class="fs-6 fw-bold p-3 rounded rounded-top-0" >Tỷ giá</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
