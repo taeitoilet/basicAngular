@@ -1,0 +1,68 @@
+<div class="head">
+  <div class="head-row1 ">
+    <div class="explore d-flex align-items-center">
+      <app-dropdown
+        title="Cá nhân"
+        [items]="[{ label: 'Cá nhân', link: '#' },
+                  { label: 'Doanh nghiệp', link: '#' },
+                  { label: 'Nhà đầu tư', link: '#' },
+                  { label: 'Về chúng tôi', link: '#' },
+                  { label: 'Tuyển dụng', link: '#' }]"
+      ></app-dropdown>
+      <div class="explore-detail">
+        <a class="mx-3">Khám phá:</a>
+        <span class="link_text me-3" >Inspire</span>
+        <span class="link_text me-3" >Priority</span>
+        <span class="link_text" >Private</span>
+      </div>
+    </div>
+    <div class="tools">
+      <div class="tools-detail">
+        <a class="mx-3"><i class="bi bi-search"></i> </a>
+        <span class="link_text me-3" >Công cụ & Tiện ích</span>
+        <span class="link_text me-3" >{{'HELP'|translate}}</span>
+        <span class="link_text me-3" >Liên hệ</span>
+      </div>
+      <i class="bi bi-globe-americas ms-3"></i>
+      <app-dropdown
+        title="Tiếng Việt"
+        [items]="[{label : 'Tiếng Việt', link : '#'},
+        {label : 'English',link : '#'}
+        ]"
+      ></app-dropdown>
+    </div>
+  </div>
+  <div class="head-row2">
+    <div class="logo-tech">
+      <img src="assets/imgs/techcombank_logo_svg_86201e50d1.svg">
+    </div>
+    <div class="services">
+      <div class="service-item mx-3">
+        <a class="" href="#">Chi tiêu</a>
+      </div>
+      <div class="service-item mx-3">
+        <a class="" href="#">Tiết kiệm</a>
+      </div>
+      <div class="service-item mx-3 ">
+        <a class="" href="#">Vay</a>
+      </div>
+      <div class="service-item mx-3 ">
+        <a class="" href="#">Đầu tư</a>
+      </div>
+      <div class="service-item mx-3 ">
+        <a class="" href="#">Bảo hiểm</a>
+      </div>
+      <div class="service-item mx-3 ">
+        <a class="" href="#">Ngân hàng trực tuyến</a>
+      </div>
+      <div class="service-item mx-3 ">
+        <a class="" href="#">Thông tin mới</a>
+      </div>
+    </div>
+    <div class="log-in me-2 d-flex align-items-center justify-content-center text-center">
+      <a>Đăng nhập</a>
+      <img class="mx-3" src="assets/imgs/white-arrow-icon.svg">
+    </div>
+  </div>
+</div>
+

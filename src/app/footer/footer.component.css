@@ -1,13 +1,13 @@
 /* footer */
 .footer a{
     text-decoration: none;
-    color: #FFFFFF;
+    color: var( --secondary-text-color);
 }
 .footer p{
-    color: #FFFFFF;
+    color: var( --secondary-text-color);
 }
 .footer{
-    background-color: #212121 !important;
+    background-color: var(--footer-background-color) !important;
 }
 .footer .logo img{
     width: 280px;

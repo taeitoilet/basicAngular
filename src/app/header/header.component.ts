@@ -1,13 +1,46 @@
-import { Component,AfterViewInit } from '@angular/core';
+import { Component,AfterViewInit, inject, OnInit } from '@angular/core';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import { AuthService } from '../services/auth/auth.service';
+import { FormsModule } from '@angular/forms';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+declare let bootstrap: any;
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [RouterLink,FormsModule,TranslateModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements AfterViewInit{
+export class HeaderComponent implements AfterViewInit,OnInit{
+  // searchKeys : string[] = []
+  translate : TranslateService = inject(TranslateService)
+  language : string = 'Tiếng Việt'
+  authService = inject(AuthService)
+  route = inject(Router)
+  searchKey :string =''
+  searchKeyList : string[] = []
+  router = inject(ActivatedRoute)
+  currentLang: string = 'vn'
+  ngOnInit(): void {
+    const searchKeys = JSON.parse(sessionStorage.getItem("searchKeys") ?? '[]')
+    this.searchKeyList = searchKeys
+    this.router.params.subscribe(params => {
+      this.currentLang = params['lang'] || 'vn';
+      this.translate.use(this.currentLang);
+    });
+
+  }
+  loadSessionStorage(){
+    const searchKeys = JSON.parse(sessionStorage.getItem("searchKeys") ?? '[]')
+    this.searchKeyList = searchKeys
+  }
+  isUnauthorized() : boolean {
+    if(localStorage.getItem('authToken') == null){
+      return true
+    }
+    return false
+  }
   ngAfterViewInit(): void {
     const toggleSubmenu = document.getElementById('toggle-submenu');
     if (toggleSubmenu) {
@@ -72,5 +105,41 @@ export class HeaderComponent implements AfterViewInit{
       });
     });
   }
+  onSearch(){
+    if(this.searchKey != ''){
+      if (this.searchKey.trim()) {
+        if(this.searchKeyList.includes(this.searchKey)){
 
+        }else{
+          this.searchKeyList.push(this.searchKey.trim())
+        }
+        this.route.navigate(['/search'], { queryParams: { content: this.searchKey } });
+        const modalElement = document.getElementById('searchModal')
+        const modalInstance = bootstrap.Modal.getInstance(modalElement)
+        modalInstance.hide()
+        sessionStorage.setItem('searchKeys',JSON.stringify(this.searchKeyList))
+        this.searchKey = ''
+      }
+    }
+
+  }
+  removeSearchKey(item: string, event: Event): void {
+    event.stopPropagation();
+    const index = this.searchKeyList.indexOf(item);
+    if (index !== -1) {
+      this.searchKeyList.splice(index, 1);
+      sessionStorage.setItem('searchKeys',JSON.stringify(this.searchKeyList))
+    }
+  }
+  get recentSearchKeys() {
+    return this.searchKeyList.slice(-5);
+  }
+  translateText(lang : string){
+    this.translate.use(lang);
+    if(lang == 'en'){
+      this.language = 'English'
+    }else{
+      this.language = 'Tiếng Việt'
+    }
+  }
 }

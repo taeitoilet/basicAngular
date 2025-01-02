@@ -1,0 +1,31 @@
+.title .search{
+    width: 20vw;
+}
+.col-lg-2 {
+    width: 15vw !important;
+}
+.col-lg-1{
+    width: 10vw !important
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .pagination button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .pagination span {
+    padding: 5px 10px;
+  }
